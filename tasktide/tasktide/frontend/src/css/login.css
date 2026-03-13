@@ -1,0 +1,232 @@
+/* --- Reset default margins/padding --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ===== COLOR PALETTE (from logo) ===== */
+:root {
+    --primary-blue: #B8D4E8;
+    --primary-brown: #8B7355;
+    --accent-red: #E85A5A;
+    --accent-green: #5DBB63;
+    --accent-blue: #5B9BD5;
+    --accent-purple: #9B7BB8;
+    --cream: #F5F0E8;
+    --dark-brown: #5D4E3C;
+    --light-bg: #F8FBFD;
+}
+
+/* --- Page layout --- */
+.login-page {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--light-bg) 0%, #E8F4F8 50%, #FDF8F3 100%);
+}
+
+/* --- Left panel (image) --- */
+.left-panel {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #A8C8DC 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px solid var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.left-panel::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -50px;
+    left: -50px;
+}
+
+.left-panel::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: -30px;
+    right: -30px;
+}
+
+.left-panel img {
+    width: 85%;
+    max-width: 420px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(93, 78, 60, 0.2));
+    z-index: 1;
+}
+
+/* --- Right panel (login form) --- */
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--cream) 100%);
+    padding: 45px 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(139, 115, 85, 0.15);
+    border: 2px solid var(--primary-blue);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--dark-brown);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-brown);
+    font-size: 0.95rem;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    margin: 10px 0;
+    border: 2px solid var(--primary-blue);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: var(--dark-brown);
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(155, 123, 184, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--accent-green) 0%, #4AA84F 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(93, 187, 99, 0.3);
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(93, 187, 99, 0.4);
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0 20px;
+    font-size: 14px;
+    color: var(--primary-brown);
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-green);
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-purple);
+}
+
+.register {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--primary-brown);
+}
+
+.error {
+    color: var(--accent-red);
+    text-align: center;
+    background: #FFE8E8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* --- BUTTON STYLES (same as landing page) --- */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-green) 0%, #4AA84F 100%);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(93, 187, 99, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(93, 187, 99, 0.4);
+}
+
+/* Optional: For transparent Sign In-style buttons */
+.btn-outline {
+    background-color: transparent;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+    color: #fff;
+    border-color: transparent;
+}
