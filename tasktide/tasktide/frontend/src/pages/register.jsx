@@ -57,8 +57,8 @@ function Register() {
         <div className="logo-container">
           {showLogo ? (
             <img
-              src="/habitcanvass.jpg"
-              alt="HabitCanvas Logo"
+              src="/tasktide.jpg"
+              alt="TaskTide Logo"
               onError={() => setShowLogo(false)}
             />
           ) : (
@@ -66,9 +66,9 @@ function Register() {
           )}
         </div>
 
-        <h2>Join HabitCanvas</h2>
+        <h2>Join TaskTide</h2>
         <p className="subtitle">
-          Start building better habits today
+          Start working on tasks without feeling overwhelmed
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -115,10 +115,6 @@ function Register() {
               </span>
 
             </div>
-
-            <p className="tip">
-              Tip: Your password must contain at least 1 uppercase letter and 1 special character.
-            </p>
 
           </div>
 

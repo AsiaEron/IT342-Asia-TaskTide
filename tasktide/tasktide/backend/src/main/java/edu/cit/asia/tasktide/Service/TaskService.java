@@ -19,7 +19,7 @@ public class TaskService {
     }
 
     public List<TaskModel> getUserTasks(int userId){
-        return taskRepository.findByUserUserId(userId);
+        return taskRepository.findByUserId(userId);
     }
 
     public void deleteTask(int taskId) {
