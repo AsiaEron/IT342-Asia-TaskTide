@@ -1,24 +1,13 @@
 package edu.cit.asia.tasktide.mobile.ui.screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import edu.cit.asia.tasktide.mobile.R
 
 @Composable
 fun LoginScreen(
@@ -27,53 +16,27 @@ fun LoginScreen(
     onLogin: (email: String, password: String) -> Unit,
     onNavigateToRegister: () -> Unit
 ) {
-    var email by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
+    AndroidView(
+        factory = { context ->
+            android.view.LayoutInflater.from(context).inflate(R.layout.activity_login, null)
+        },
+        modifier = modifier,
+        update = { view ->
+            val etEmail = view.findViewById<EditText>(R.id.etEmail)
+            val etPassword = view.findViewById<EditText>(R.id.etPassword)
+            val btnLogin = view.findViewById<Button>(R.id.btnLogin)
+            val btnGoRegister = view.findViewById<Button>(R.id.btnGoRegister)
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(text = "TaskTide Login", style = MaterialTheme.typography.headlineMedium)
+            btnLogin.isEnabled = !isLoading
+            btnLogin.text = if (isLoading) "Logging in..." else "Login"
 
-        OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Email") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp)
-        )
+            btnLogin.setOnClickListener {
+                onLogin(etEmail.text.toString(), etPassword.text.toString())
+            }
 
-        OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
-            label = { Text("Password") },
-            visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
-        )
-
-        Button(
-            onClick = { onLogin(email, password) },
-            enabled = !isLoading,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp)
-        ) {
-            Text(if (isLoading) "Logging in..." else "Login")
+            btnGoRegister.setOnClickListener {
+                onNavigateToRegister()
+            }
         }
-
-        TextButton(
-            onClick = onNavigateToRegister,
-            modifier = Modifier
-                .align(Alignment.End)
-                .padding(top = 8.dp)
-        ) {
-            Text("Create account")
-        }
-    }
+    )
 }
