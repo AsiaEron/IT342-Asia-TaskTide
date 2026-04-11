@@ -4,8 +4,16 @@ import { AuthContext } from "../auth/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 
-function Login() {
+function decodeTokenUserId(token) {
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.userId ?? payload.id ?? (Number.isFinite(Number(payload.sub)) ? Number(payload.sub) : null);
+  } catch {
+    return null;
+  }
+}
 
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,17 +22,11 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
     setError("");
 
     try {
-
-      const res = await API.post("/users/login", {
-        email,
-        password
-      });
-
+      const res = await API.post("/users/login", { email, password });
       const token = res.data;
 
       if (!token || token === "null" || token === "undefined") {
@@ -34,10 +36,18 @@ function Login() {
 
       login(token);
 
-      navigate("/dashboard");
+      const userId = decodeTokenUserId(token);
+      if (userId) {
+        localStorage.setItem("userId", String(userId));
+      }
 
+      navigate("/dashboard", { replace: true });
     } catch (err) {
-      setError(err.response?.data || "Invalid credentials");
+      setError(
+        err.response?.data?.message ||
+          err.response?.data ||
+          "Invalid credentials"
+      );
     }
   };
 
@@ -74,7 +84,6 @@ function Login() {
         </div>
       </div>
     </div>
-
   );
 }
 
