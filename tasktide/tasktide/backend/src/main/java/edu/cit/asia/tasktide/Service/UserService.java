@@ -43,4 +43,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public UserModel findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
 }

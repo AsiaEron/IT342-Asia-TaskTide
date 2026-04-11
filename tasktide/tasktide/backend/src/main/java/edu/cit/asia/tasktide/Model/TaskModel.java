@@ -2,6 +2,8 @@ package edu.cit.asia.tasktide.Model;
 
     import java.util.Date;
 
+    import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
     import jakarta.persistence.Entity;
     import jakarta.persistence.GeneratedValue;
     import jakarta.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class TaskModel {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"tasks", "password", "role"})
     private UserModel user;
 
     @Id
@@ -29,6 +32,15 @@ public class TaskModel {
     public int getTask_id() {
         return task_id;
     }
+
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
+    }
+
     public String getTask_name() {
         return task_name;
     }

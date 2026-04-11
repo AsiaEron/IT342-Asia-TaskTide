@@ -329,8 +329,14 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    cursor: default;
+    cursor: pointer;
     flex-shrink: 0;
+}
+
+.circle.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .checked {

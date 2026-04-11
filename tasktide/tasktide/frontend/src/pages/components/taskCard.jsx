@@ -3,7 +3,7 @@ import React from "react";
 const isCompletedStatus = (status) =>
   String(status || "").toLowerCase() === "completed";
 
-export default function TaskCard({ task, onEdit, onDelete }) {
+export default function TaskCard({ task, onEdit, onDelete, onToggleComplete, isToggling = false }) {
   const id = task.id ?? task.task_id;
   const title = task.task_name ?? task.title ?? "";
   const description = task.description ?? task.category ?? "";
@@ -15,8 +15,29 @@ export default function TaskCard({ task, onEdit, onDelete }) {
     <div className={`task-card ${completed ? "completed" : ""}`} data-id={id}>
       <div className="task-main-row">
         <div className="left">
-          <div className={`circle ${completed ? "checked" : ""}`} data-id={id}>
-            <i className="fa fa-check" style={{ display: completed ? "block" : "none" }} />
+          <div
+            className={`circle ${completed ? "checked" : ""} ${isToggling ? "disabled" : ""}`}
+            data-id={id}
+            role="button"
+            tabIndex={isToggling ? -1 : 0}
+            aria-label={completed ? "Mark as active" : "Mark as completed"}
+            aria-disabled={isToggling}
+            onClick={() => {
+              if (!isToggling) onToggleComplete(task);
+            }}
+            onKeyDown={(e) => {
+              if (isToggling) return;
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onToggleComplete(task);
+              }
+            }}
+          >
+            {isToggling ? (
+              <i className="fa fa-spinner fa-spin" />
+            ) : (
+              <i className="fa fa-check" style={{ display: completed ? "block" : "none" }} />
+            )}
           </div>
 
           <div className="title-category">

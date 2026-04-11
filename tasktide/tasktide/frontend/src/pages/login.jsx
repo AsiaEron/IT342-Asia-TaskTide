@@ -27,7 +27,7 @@ function Login() {
 
     try {
       const res = await API.post("/users/login", { email, password });
-      const token = res.data;
+      const token = res.data?.token ?? res.data;
 
       if (!token || token === "null" || token === "undefined") {
         setError("Invalid credentials");
@@ -36,7 +36,7 @@ function Login() {
 
       login(token);
 
-      const userId = decodeTokenUserId(token);
+      const userId = res.data?.userId ?? decodeTokenUserId(token);
       if (userId) {
         localStorage.setItem("userId", String(userId));
       }

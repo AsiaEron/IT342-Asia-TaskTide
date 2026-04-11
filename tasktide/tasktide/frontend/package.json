@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
     "axios": "^1.8.4",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
