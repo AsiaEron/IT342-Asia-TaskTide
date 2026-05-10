@@ -1,0 +1,30 @@
+/* App.css - Global Application Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #F8FBFD 0%, #E8F4F8 50%, #FDF8F3 100%);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Color Palette */
+:root {
+  --primary-blue: #B8D4E8;
+  --primary-brown: #8B7355;
+  --accent-red: #E85A5A;
+  --accent-green: #5DBB63;
+  --accent-blue: #5B9BD5;
+  --accent-purple: #9B7BB8;
+  --cream: #F5F0E8;
+  --dark-brown: #5D4E3C;
+  --light-bg: #F8FBFD;
+}

@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./pages/login";
-import PrivateRoute from "./auth/privateRoute";
-import Register from "./pages/register";
-import Dashboard from "./pages/dashboard";
+import Login from "./features/auth/Login";
+import PrivateRoute from "./shared/utils/privateRoute";
+import Register from "./features/auth/Register";
+import Dashboard from "./features/dashboard/Dashboard";
 
 function App() {
   return (
