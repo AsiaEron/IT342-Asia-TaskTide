@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.mobile.data
+package edu.cit.asia.tasktide.mobile.shared.model
 
 import com.google.gson.annotations.SerializedName
 

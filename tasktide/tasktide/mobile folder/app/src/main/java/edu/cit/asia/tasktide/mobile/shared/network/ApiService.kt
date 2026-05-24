@@ -1,9 +1,10 @@
-package edu.cit.asia.tasktide.mobile.api
+package edu.cit.asia.tasktide.mobile.shared.network
 
-import edu.cit.asia.tasktide.mobile.data.AddTaskRequest
-import edu.cit.asia.tasktide.mobile.data.LoginRequest
-import edu.cit.asia.tasktide.mobile.data.RegisterRequest
-import edu.cit.asia.tasktide.mobile.data.TaskDto
+import edu.cit.asia.tasktide.mobile.shared.model.AddTaskRequest
+import edu.cit.asia.tasktide.mobile.shared.model.AuthResponse
+import edu.cit.asia.tasktide.mobile.shared.model.RegisterRequest
+import edu.cit.asia.tasktide.mobile.shared.model.RegisterResponse
+import edu.cit.asia.tasktide.mobile.shared.model.TaskDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE

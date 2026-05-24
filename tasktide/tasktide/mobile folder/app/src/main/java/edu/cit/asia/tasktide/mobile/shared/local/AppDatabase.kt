@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.mobile.data.local
+package edu.cit.asia.tasktide.mobile.shared.local
 
 import android.content.Context
 import androidx.room.Database

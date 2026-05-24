@@ -1,12 +1,12 @@
-package edu.cit.asia.tasktide.mobile.ui
+package edu.cit.asia.tasktide.mobile.features.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import edu.cit.asia.tasktide.mobile.api.TokenManager
-import edu.cit.asia.tasktide.mobile.data.RegisterRequest
-import edu.cit.asia.tasktide.mobile.data.TaskDto
-import edu.cit.asia.tasktide.mobile.data.TaskRepository
+import edu.cit.asia.tasktide.mobile.features.task.TaskRepository
+import edu.cit.asia.tasktide.mobile.shared.model.RegisterRequest
+import edu.cit.asia.tasktide.mobile.shared.model.TaskDto
+import edu.cit.asia.tasktide.mobile.shared.storage.TokenManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -28,6 +28,7 @@ function Login() {
     try {
       const res = await API.post("/users/login", { email, password });
       const token = res.data?.token ?? res.data;
+      const role = res.data?.role;
 
       if (!token || token === "null" || token === "undefined") {
         setError("Invalid credentials");
@@ -35,13 +36,20 @@ function Login() {
       }
 
       login(token);
+      if (role) {
+        localStorage.setItem("role", role);
+      }
 
       const userId = res.data?.userId ?? decodeTokenUserId(token);
       if (userId) {
         localStorage.setItem("userId", String(userId));
       }
 
-      navigate("/dashboard", { replace: true });
+      if (role === "ROLE_ADMIN") {
+        navigate("/admin/dashboard", { replace: true });
+      } else {
+        navigate("/dashboard", { replace: true });
+      }
     } catch (err) {
       setError(
         err.response?.data?.message ||
@@ -80,6 +88,9 @@ function Login() {
 
           <p className="register">
             Don&apos;t have an account? <Link to="/register">Register</Link>
+          </p>
+          <p className="register">
+            Need an admin account? <Link to="/register-admin">Register as Admin</Link>
           </p>
         </div>
       </div>

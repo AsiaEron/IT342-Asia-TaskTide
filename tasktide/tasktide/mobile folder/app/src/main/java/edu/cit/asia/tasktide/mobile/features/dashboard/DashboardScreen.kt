@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.mobile.ui.screens
+package edu.cit.asia.tasktide.mobile.features.dashboard
 
 import android.widget.Button
 import android.widget.EditText
@@ -10,7 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import edu.cit.asia.tasktide.mobile.R
-import edu.cit.asia.tasktide.mobile.data.TaskDto
+import edu.cit.asia.tasktide.mobile.shared.model.TaskDto
 
 @Composable
 fun DashboardScreen(

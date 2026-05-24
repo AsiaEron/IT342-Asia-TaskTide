@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.mobile.ui.screens
+package edu.cit.asia.tasktide.mobile.features.dashboard
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import edu.cit.asia.tasktide.mobile.data.TaskDto
+import edu.cit.asia.tasktide.mobile.shared.model.TaskDto
 
 @Composable
 fun TaskListComposable(

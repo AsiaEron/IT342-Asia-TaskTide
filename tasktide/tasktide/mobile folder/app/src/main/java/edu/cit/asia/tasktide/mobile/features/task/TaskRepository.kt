@@ -1,10 +1,15 @@
-package edu.cit.asia.tasktide.mobile.data
+package edu.cit.asia.tasktide.mobile.features.task
 
 import android.content.Context
-import edu.cit.asia.tasktide.mobile.api.ApiClient
-import edu.cit.asia.tasktide.mobile.api.TokenManager
-import edu.cit.asia.tasktide.mobile.data.local.AppDatabase
-import edu.cit.asia.tasktide.mobile.data.local.TaskEntity
+import edu.cit.asia.tasktide.mobile.shared.local.AppDatabase
+import edu.cit.asia.tasktide.mobile.shared.local.TaskEntity
+import edu.cit.asia.tasktide.mobile.shared.model.AddTaskRequest
+import edu.cit.asia.tasktide.mobile.shared.model.AuthResponse
+import edu.cit.asia.tasktide.mobile.shared.model.RegisterRequest
+import edu.cit.asia.tasktide.mobile.shared.model.TaskDto
+import edu.cit.asia.tasktide.mobile.shared.model.UserRef
+import edu.cit.asia.tasktide.mobile.shared.network.ApiClient
+import edu.cit.asia.tasktide.mobile.shared.storage.TokenManager
 
 class TaskRepository(context: Context) {
 

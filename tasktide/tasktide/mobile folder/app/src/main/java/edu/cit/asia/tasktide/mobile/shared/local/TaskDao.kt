@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.mobile.data.local
+package edu.cit.asia.tasktide.mobile.shared.local
 
 import androidx.room.Dao
 import androidx.room.Insert

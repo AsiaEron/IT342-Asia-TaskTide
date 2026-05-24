@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import edu.cit.asia.tasktide.auth.LoginResult;
 import edu.cit.asia.tasktide.shared.entity.UserModel;
 
 @WebMvcTest(AuthController.class)
@@ -49,7 +50,7 @@ public class AuthControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.user_id").value(1))
                 .andExpect(jsonPath("$.email").value("john@example.com"))
-                .andExpect(jsonPath("$.message").value("Account created successfully"));
+                .andExpect(jsonPath("$.message").value("Registration successful. A verification code has been sent to your email."));
     }
 
     @Test
@@ -62,7 +63,7 @@ public class AuthControllerTest {
         existingUser.setUser_id(1);
         existingUser.setEmail("john@example.com");
 
-        when(userService.login(anyString(), anyString())).thenReturn("token123");
+        when(userService.login(anyString(), anyString())).thenReturn(new LoginResult(LoginResult.Status.SUCCESS, "token123"));
         when(userService.findByEmail(anyString())).thenReturn(existingUser);
 
         mockMvc.perform(post("/users/login")
@@ -80,7 +81,7 @@ public class AuthControllerTest {
         user.setEmail("john@example.com");
         user.setPassword("wrongpassword");
 
-        when(userService.login(anyString(), anyString())).thenReturn(null);
+        when(userService.login(anyString(), anyString())).thenReturn(new LoginResult(LoginResult.Status.INVALID_CREDENTIALS, null));
 
         mockMvc.perform(post("/users/login")
                 .contentType(MediaType.APPLICATION_JSON)

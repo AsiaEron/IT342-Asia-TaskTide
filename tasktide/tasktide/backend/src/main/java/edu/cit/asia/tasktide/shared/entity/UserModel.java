@@ -3,6 +3,8 @@ package edu.cit.asia.tasktide.shared.entity;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +19,7 @@ public class UserModel {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleModel role;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaskModel> tasks;
 
     @Id
@@ -27,6 +29,11 @@ public class UserModel {
     private String lname;
     private String email;
     private String password;
+
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean emailVerified = false;
+
+    private String verificationCode;
     private Date date_joined;
 
     public int getUser_id() {
@@ -67,6 +74,22 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 
     public Date getDate_joined() {

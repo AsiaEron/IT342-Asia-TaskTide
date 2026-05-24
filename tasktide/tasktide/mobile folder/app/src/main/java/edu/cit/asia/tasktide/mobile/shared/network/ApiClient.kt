@@ -1,6 +1,7 @@
-package edu.cit.asia.tasktide.mobile.api
+package edu.cit.asia.tasktide.mobile.shared.network
 
 import android.content.Context
+import edu.cit.asia.tasktide.mobile.shared.storage.TokenManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

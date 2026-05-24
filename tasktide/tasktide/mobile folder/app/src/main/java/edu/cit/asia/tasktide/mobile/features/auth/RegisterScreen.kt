@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.mobile.ui.screens
+package edu.cit.asia.tasktide.mobile.features.auth
 
 import android.widget.Button
 import android.widget.EditText

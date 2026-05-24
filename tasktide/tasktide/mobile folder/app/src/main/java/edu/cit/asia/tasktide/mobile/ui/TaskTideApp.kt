@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.flowWithLifecycle
-import edu.cit.asia.tasktide.mobile.data.RegisterRequest
-import edu.cit.asia.tasktide.mobile.ui.screens.DashboardScreen
-import edu.cit.asia.tasktide.mobile.ui.screens.LoginScreen
-import edu.cit.asia.tasktide.mobile.ui.screens.RegisterScreen
+import edu.cit.asia.tasktide.mobile.shared.model.RegisterRequest
+import edu.cit.asia.tasktide.mobile.features.auth.LoginScreen
+import edu.cit.asia.tasktide.mobile.features.auth.RegisterScreen
+import edu.cit.asia.tasktide.mobile.features.dashboard.DashboardScreen
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable

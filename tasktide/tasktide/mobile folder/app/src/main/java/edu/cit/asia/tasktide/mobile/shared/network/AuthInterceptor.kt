@@ -1,5 +1,6 @@
-package edu.cit.asia.tasktide.mobile.api
+package edu.cit.asia.tasktide.mobile.shared.network
 
+import edu.cit.asia.tasktide.mobile.shared.storage.TokenManager
 import okhttp3.Interceptor
 import okhttp3.Response
 

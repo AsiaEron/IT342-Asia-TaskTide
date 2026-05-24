@@ -4,8 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import API from "../../shared/services/axiosConfig";
 import { useNavigate } from "react-router-dom";
 
-function Register() {
-
+function AdminRegister() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -15,7 +14,6 @@ function Register() {
     lname: ""
   });
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
@@ -44,7 +42,7 @@ function Register() {
     }
 
     try {
-      const response = await API.post("/users/register", formData);
+      const response = await API.post("/users/register-admin", formData);
       setIsVerificationPending(true);
       setServerMessage(response.data?.message || "A verification code has been sent to your email.");
       setError("");
@@ -52,7 +50,8 @@ function Register() {
     } catch (err) {
       setError(
         err.response?.data?.message ||
-        "Registration failed"
+        err.response?.data ||
+        "Admin registration failed"
       );
     }
   };
@@ -77,9 +76,7 @@ function Register() {
 
   return (
     <div className="register-container">
-
       <div className="register-card">
-
         <div className="logo-container">
           {showLogo ? (
             <img
@@ -92,17 +89,14 @@ function Register() {
           )}
         </div>
 
-        <h2>Join TaskTide</h2>
+        <h2>Admin Registration</h2>
         <p className="subtitle">
-          Start working on tasks without feeling overwhelmed
+          Create an admin account to manage the TaskTide system.
         </p>
 
         <form onSubmit={isVerificationPending ? handleVerify : handleSubmit}>
-
           <div className="input-group">
-
             <label>Email Address</label>
-
             <input
               type="email"
               name="email"
@@ -114,7 +108,6 @@ function Register() {
               onChange={handleChange}
               disabled={isVerificationPending}
             />
-
           </div>
 
           {!isVerificationPending ? (
@@ -179,17 +172,13 @@ function Register() {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                className="create-btn"
-              >
-                Create Account
+              <button type="submit" className="create-btn">
+                Create Admin Account
               </button>
             </>
           ) : (
             <>
               <p className="success-message">{serverMessage}</p>
-
               <div className="input-group">
                 <label>Verification Code</label>
                 <input
@@ -210,18 +199,14 @@ function Register() {
 
           {error && <p className="error">{error}</p>}
           {verificationError && <p className="error">{verificationError}</p>}
-
         </form>
 
         <p className="login-link">
-          Already have an account?{" "}
-          <a href="/login">Login</a>
+          Already have an account? <a href="/login">Login</a>
         </p>
-
       </div>
-
     </div>
   );
 }
 
-export default Register;
+export default AdminRegister;
