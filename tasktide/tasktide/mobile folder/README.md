@@ -26,10 +26,9 @@ This folder contains a standalone Android app for your Spring Boot backend.
 
 - `POST /users/register`
 - `POST /users/login`
-- `GET /users/all` (used to resolve user_id after login)
-- `GET /tasks/user/{userId}`
-- `POST /tasks/add`
-- `DELETE /tasks/delete/{taskId}`
+- `GET /api/tasks/user/{userId}`
+- `POST /api/tasks`
+- `DELETE /api/tasks/{taskId}`
 
 ## Important setup
 
@@ -37,7 +36,7 @@ This folder contains a standalone Android app for your Spring Boot backend.
 2. If running Android emulator, base URL is already set to:
    - `http://10.0.2.2:8080/`
 3. If running on a real phone, update base URL in:
-   - `app/src/main/java/edu/cit/asia/tasktide/mobile/api/ApiClient.kt`
+   - `app/src/main/java/edu/cit/asia/tasktide/mobile/shared/network/ApiClient.kt`
 
 ## Open in Android Studio
 
@@ -49,6 +48,8 @@ This folder contains a standalone Android app for your Spring Boot backend.
 
 ## Notes
 
-- Backend currently returns only JWT on login, so this app resolves the user's ID by calling `/users/all` and matching by email.
-- Local tasks are stored in Room and refreshed from API when available.
-- A cleaner backend approach is returning `{ token, user_id }` from `/users/login`.
+- The mobile app expects the backend login response to include `token` and `userId`, which matches the current backend `AuthResponseDTO`.
+- The app stores token and user ID locally, then uses them to load tasks and add/delete tasks.
+- Local tasks are stored in Room and refreshed from the backend when available.
+- The mobile app does not currently use `/users/all` for normal login flow.
+- If you change the backend host, update `BASE_URL` in `app/src/main/java/edu/cit/asia/tasktide/mobile/shared/network/ApiClient.kt`.
