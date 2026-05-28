@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.shared.repository;
+package edu.cit.asia.tasktide.task.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import edu.cit.asia.tasktide.shared.entity.TaskModel;
+import edu.cit.asia.tasktide.task.entity.TaskModel;
 
 public interface TaskRepository extends JpaRepository<TaskModel, Integer> {
 

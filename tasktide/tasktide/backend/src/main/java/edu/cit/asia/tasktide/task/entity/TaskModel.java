@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.shared.entity;
+package edu.cit.asia.tasktide.task.entity;
 
 import java.util.Date;
 
@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
+import edu.cit.asia.tasktide.user.entity.UserModel;
 
 @Entity
 public class TaskModel {

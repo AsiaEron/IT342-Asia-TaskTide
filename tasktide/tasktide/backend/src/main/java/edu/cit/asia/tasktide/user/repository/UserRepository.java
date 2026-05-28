@@ -1,8 +1,8 @@
-package edu.cit.asia.tasktide.shared.repository;
+package edu.cit.asia.tasktide.user.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.cit.asia.tasktide.shared.entity.UserModel;
+import edu.cit.asia.tasktide.user.entity.UserModel;
 
 public interface UserRepository extends JpaRepository<UserModel, Integer> {
 

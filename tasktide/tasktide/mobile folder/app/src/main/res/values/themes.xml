@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.TaskTideMobile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#0B6E4F</item>
-        <item name="colorPrimaryVariant">#08563E</item>
-        <item name="colorSecondary">#F2A541</item>
+        <item name="colorPrimary">@color/tasktide_accent_blue</item>
+        <item name="colorPrimaryVariant">@color/tasktide_accent_purple</item>
+        <item name="colorSecondary">@color/tasktide_accent_green</item>
+        <item name="android:colorBackground">@color/tasktide_light_bg</item>
+        <item name="colorSurface">@color/tasktide_surface</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorOnSecondary">@android:color/white</item>
     </style>
 </resources>

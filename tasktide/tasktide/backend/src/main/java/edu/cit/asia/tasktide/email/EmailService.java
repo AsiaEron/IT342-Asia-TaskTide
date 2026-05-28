@@ -8,7 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import edu.cit.asia.tasktide.shared.entity.UserModel;
+import edu.cit.asia.tasktide.user.entity.UserModel;
 
 @Service
 public class EmailService {

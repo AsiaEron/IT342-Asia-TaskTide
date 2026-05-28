@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.cit.asia.tasktide.shared.entity.TaskModel;
+import edu.cit.asia.tasktide.task.entity.TaskModel;
 
 @RestController
 @RequestMapping("/api/tasks")

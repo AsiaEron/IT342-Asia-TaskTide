@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../../shared/services/axiosConfig";
-import { AuthContext } from "../../shared/utils/authContext";
+import API from "../auth/services/axiosConfig";
+import { AuthContext } from "../auth/authContext";
 import TaskCard from "./components/TaskCard";
 import "./Dashboard.css";
 

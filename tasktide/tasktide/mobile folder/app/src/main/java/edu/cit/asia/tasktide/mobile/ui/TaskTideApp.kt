@@ -12,9 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.flowWithLifecycle
-import edu.cit.asia.tasktide.mobile.shared.model.RegisterRequest
+import edu.cit.asia.tasktide.mobile.features.auth.TaskTideViewModel
+import edu.cit.asia.tasktide.mobile.features.auth.model.RegisterRequest
 import edu.cit.asia.tasktide.mobile.features.auth.LoginScreen
 import edu.cit.asia.tasktide.mobile.features.auth.RegisterScreen
+import edu.cit.asia.tasktide.mobile.features.auth.VerifyEmailScreen
 import edu.cit.asia.tasktide.mobile.features.dashboard.DashboardScreen
 import kotlinx.coroutines.flow.collectLatest
 
@@ -59,15 +61,39 @@ fun TaskTideApp(viewModel: TaskTideViewModel) {
                 onBackToLogin = viewModel::navigateToLogin
             )
 
-            AppRoute.DASHBOARD -> DashboardScreen(
+            AppRoute.VERIFY_EMAIL -> VerifyEmailScreen(
                 modifier = Modifier.padding(padding),
-                tasks = uiState.tasks,
                 isLoading = uiState.isLoading,
-                onRefresh = viewModel::loadTasks,
-                onAddTask = viewModel::addTask,
-                onDeleteTask = viewModel::deleteTask,
-                onLogout = viewModel::logout
+                onVerify = viewModel::verifyEmail,
+                onBackToLogin = viewModel::navigateToLogin
             )
+
+            AppRoute.DASHBOARD -> {
+                if (uiState.isAdmin) {
+                    edu.cit.asia.tasktide.mobile.features.dashboard.AdminDashboardScreen(
+                        viewModel = viewModel,
+                        modifier = Modifier.padding(padding)
+                    )
+                } else {
+                    DashboardScreen(
+                        modifier = Modifier.padding(padding),
+                        tasks = uiState.tasks,
+                        isLoading = uiState.isLoading,
+                        onRefresh = viewModel::loadTasks,
+                        onAddTask = viewModel::addTask,
+                        onDeleteTask = viewModel::deleteTask,
+                        onUpdateTask = viewModel::updateTask,
+                        onToggleTask = viewModel::toggleTaskComplete,
+                        onLogout = viewModel::logout
+                    )
+                }
+            }
+
+            AppRoute.ADMIN_USER_TASKS -> {
+                edu.cit.asia.tasktide.mobile.features.dashboard.AdminUserTasksScreen(
+                    viewModel = viewModel
+                )
+            }
         }
     }
 }

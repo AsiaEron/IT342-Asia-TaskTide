@@ -14,6 +14,14 @@ class TokenManager(context: Context) {
         return prefs.getString(KEY_TOKEN, null)
     }
 
+    fun saveUserRole(role: String?) {
+        prefs.edit().putString(KEY_ROLE, role).apply()
+    }
+
+    fun getUserRole(): String? {
+        return prefs.getString(KEY_ROLE, null)
+    }
+
     fun saveUserId(userId: Int) {
         prefs.edit().putInt(KEY_USER_ID, userId).apply()
     }
@@ -34,5 +42,6 @@ class TokenManager(context: Context) {
         private const val PREFS_NAME = "tasktide_mobile_prefs"
         private const val KEY_TOKEN = "jwt_token"
         private const val KEY_USER_ID = "user_id"
+        private const val KEY_ROLE = "user_role"
     }
 }

@@ -19,8 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import edu.cit.asia.tasktide.shared.entity.TaskModel;
-import edu.cit.asia.tasktide.shared.entity.UserModel;
+import edu.cit.asia.tasktide.task.entity.TaskModel;
 
 @WebMvcTest(TaskController.class)
 public class TaskControllerTest {

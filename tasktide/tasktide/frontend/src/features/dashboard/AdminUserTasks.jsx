@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import API from "../../shared/services/axiosConfig";
+import API from "../auth/services/axiosConfig";
 import TaskCard from "./components/TaskCard";
 import "./Dashboard.css";
 

@@ -1,30 +1,6 @@
-package edu.cit.asia.tasktide.mobile.data
+package edu.cit.asia.tasktide.mobile.features.task.model
 
 import com.google.gson.annotations.SerializedName
-
-data class LoginRequest(
-    val email: String,
-    val password: String
-)
-
-data class RegisterRequest(
-    val fname: String,
-    val lname: String,
-    val email: String,
-    val password: String
-)
-
-data class AuthResponse(
-    val token: String,
-    val userId: Int?,
-    val email: String?
-)
-
-data class RegisterResponse(
-    val userId: Int,
-    val email: String,
-    val message: String
-)
 
 data class UserRef(
     @SerializedName("user_id") val userId: Int

@@ -13,8 +13,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import edu.cit.asia.tasktide.shared.entity.UserModel;
-import edu.cit.asia.tasktide.shared.repository.UserRepository;
+import edu.cit.asia.tasktide.user.entity.UserModel;
+import edu.cit.asia.tasktide.user.repository.UserRepository;
 import edu.cit.asia.tasktide.user.dto.UserSummaryDTO;
 
 @WebMvcTest(UserController.class)

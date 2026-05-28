@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import edu.cit.asia.tasktide.task.entity.TaskModel;
 
 @Entity
 public class UserModel {

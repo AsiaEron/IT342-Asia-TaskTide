@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.cit.asia.tasktide.auth.LoginResult;
-import edu.cit.asia.tasktide.shared.entity.UserModel;
+import edu.cit.asia.tasktide.user.entity.UserModel;
 
 @WebMvcTest(AuthController.class)
 public class AuthControllerTest {

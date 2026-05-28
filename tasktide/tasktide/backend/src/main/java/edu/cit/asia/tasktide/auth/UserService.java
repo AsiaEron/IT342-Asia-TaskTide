@@ -8,10 +8,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.cit.asia.tasktide.email.EmailService;
-import edu.cit.asia.tasktide.shared.entity.RoleModel;
-import edu.cit.asia.tasktide.shared.entity.UserModel;
-import edu.cit.asia.tasktide.shared.repository.RoleRepository;
-import edu.cit.asia.tasktide.shared.repository.UserRepository;
+import edu.cit.asia.tasktide.user.entity.RoleModel;
+import edu.cit.asia.tasktide.user.entity.UserModel;
+import edu.cit.asia.tasktide.user.repository.RoleRepository;
+import edu.cit.asia.tasktide.user.repository.UserRepository;
 import edu.cit.asia.tasktide.shared.security.JwtUtil;
 
 @Service

@@ -18,9 +18,9 @@ This folder contains a standalone Android app for your Spring Boot backend.
 - `LoginActivity` is the single activity host.
 - `TaskTideViewModel` handles state and actions.
 - Compose screens are split into:
-   - `ui/screens/LoginScreen.kt`
-   - `ui/screens/RegisterScreen.kt`
-   - `ui/screens/DashboardScreen.kt`
+   - `features/auth/LoginScreen.kt`
+   - `features/auth/RegisterScreen.kt`
+   - `features/dashboard/DashboardScreen.kt`
 
 ## Backend API used
 

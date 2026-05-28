@@ -3,11 +3,12 @@ package edu.cit.asia.tasktide.mobile.features.task
 import android.content.Context
 import edu.cit.asia.tasktide.mobile.shared.local.AppDatabase
 import edu.cit.asia.tasktide.mobile.shared.local.TaskEntity
-import edu.cit.asia.tasktide.mobile.shared.model.AddTaskRequest
-import edu.cit.asia.tasktide.mobile.shared.model.AuthResponse
-import edu.cit.asia.tasktide.mobile.shared.model.RegisterRequest
-import edu.cit.asia.tasktide.mobile.shared.model.TaskDto
-import edu.cit.asia.tasktide.mobile.shared.model.UserRef
+import edu.cit.asia.tasktide.mobile.features.task.model.AddTaskRequest
+import edu.cit.asia.tasktide.mobile.features.auth.model.LoginRequest
+import edu.cit.asia.tasktide.mobile.features.auth.model.RegisterRequest
+import edu.cit.asia.tasktide.mobile.features.task.model.TaskDto
+import edu.cit.asia.tasktide.mobile.features.auth.model.VerifyEmailRequest
+import edu.cit.asia.tasktide.mobile.features.task.model.UserRef
 import edu.cit.asia.tasktide.mobile.shared.network.ApiClient
 import edu.cit.asia.tasktide.mobile.shared.storage.TokenManager
 
@@ -33,6 +34,9 @@ class TaskRepository(context: Context) {
 
             tokenManager.saveToken(token)
             tokenManager.saveUserId(userId)
+            // save optional role
+            val role = try { auth.role } catch (ex: Exception) { null }
+            tokenManager.saveUserRole(role)
         }
     }
 
@@ -40,6 +44,15 @@ class TaskRepository(context: Context) {
         return runCatching {
             api.register(request)
         }.map { }
+    }
+
+    suspend fun verifyEmail(email: String, verificationCode: String): Result<Unit> {
+        return runCatching {
+            val response = api.verifyEmail(VerifyEmailRequest(email = email, verificationCode = verificationCode))
+            if (!response.isSuccessful) {
+                throw IllegalStateException("Verification failed: ${response.code()}")
+            }
+        }
     }
 
     suspend fun getTasks(): Result<List<TaskDto>> {
@@ -72,7 +85,7 @@ class TaskRepository(context: Context) {
                 taskName = taskName,
                 description = description,
                 energyLevel = energyLevel,
-                status = "PENDING",
+                status = "ACTIVE",
                 user = UserRef(userId)
             )
             val created = api.addTask(request)
@@ -92,8 +105,49 @@ class TaskRepository(context: Context) {
         }
     }
 
+    suspend fun updateTask(taskId: Int, taskName: String, description: String, energyLevel: String, status: String): Result<TaskDto> {
+        return runCatching {
+            val userId = tokenManager.getUserId()
+            require(userId > 0) { "Missing user ID. Please log in again." }
+
+            val request = AddTaskRequest(
+                taskName = taskName,
+                description = description,
+                energyLevel = energyLevel,
+                status = status,
+                user = UserRef(userId)
+            )
+
+            val updated = api.updateTask(taskId, request)
+            taskDao.upsertAll(listOf(updated.toEntity(userId)))
+            updated
+        }
+    }
+
+    // Admin: list users (non-admins) and delete user
+    suspend fun getAllUsers(): Result<List<edu.cit.asia.tasktide.mobile.features.admin.model.UserSummary>> {
+        return runCatching {
+            api.getAllUsers()
+        }
+    }
+
+    suspend fun deleteUser(userId: Int): Result<Unit> {
+        return runCatching {
+            val response = api.deleteUser(userId)
+            if (!response.isSuccessful) {
+                throw IllegalStateException("Delete user failed: ${response.code()}")
+            }
+        }
+    }
+
     fun logout() {
         tokenManager.clear()
+    }
+
+    suspend fun getTasksByUser(userId: Int): Result<List<TaskDto>> {
+        return runCatching {
+            api.getTasksByUser(userId)
+        }
     }
 
     private fun TaskDto.toEntity(userId: Int): TaskEntity {

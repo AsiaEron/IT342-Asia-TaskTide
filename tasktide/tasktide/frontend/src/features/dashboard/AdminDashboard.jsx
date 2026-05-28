@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../../shared/services/axiosConfig";
-import { AuthContext } from "../../shared/utils/authContext";
+import API from "../auth/services/axiosConfig";
+import { AuthContext } from "../auth/authContext";
 import "./Dashboard.css";
 
 export default function AdminDashboard() {

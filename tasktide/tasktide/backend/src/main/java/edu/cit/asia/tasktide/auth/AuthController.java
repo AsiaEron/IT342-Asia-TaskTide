@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.cit.asia.tasktide.auth.dto.AuthResponseDTO;
 import edu.cit.asia.tasktide.auth.dto.RegisterResponseDTO;
 import edu.cit.asia.tasktide.auth.dto.VerifyEmailRequestDTO;
-import edu.cit.asia.tasktide.shared.entity.UserModel;
+import edu.cit.asia.tasktide.user.entity.UserModel;
 
 @RestController
 @RequestMapping("/users")

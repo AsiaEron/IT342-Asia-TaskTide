@@ -1,4 +1,4 @@
-package edu.cit.asia.tasktide.shared.entity;
+package edu.cit.asia.tasktide.user.entity;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+
+import edu.cit.asia.tasktide.user.entity.UserModel;
 
 @Entity
 public class RoleModel {

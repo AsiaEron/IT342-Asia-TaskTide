@@ -4,7 +4,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import edu.cit.asia.tasktide.mobile.R
@@ -20,7 +20,7 @@ fun LoginScreen(
         factory = { context ->
             android.view.LayoutInflater.from(context).inflate(R.layout.activity_login, null)
         },
-        modifier = modifier,
+        modifier = modifier.fillMaxSize(),
         update = { view ->
             val etEmail = view.findViewById<EditText>(R.id.etEmail)
             val etPassword = view.findViewById<EditText>(R.id.etPassword)

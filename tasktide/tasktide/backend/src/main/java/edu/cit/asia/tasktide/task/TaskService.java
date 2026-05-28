@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.cit.asia.tasktide.shared.entity.TaskModel;
-import edu.cit.asia.tasktide.shared.repository.TaskRepository;
+import edu.cit.asia.tasktide.task.entity.TaskModel;
+import edu.cit.asia.tasktide.task.repository.TaskRepository;
 
 @Service
 public class TaskService {

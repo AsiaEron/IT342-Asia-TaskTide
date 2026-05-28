@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import API from "../../shared/services/axiosConfig";
+import API from "./services/axiosConfig";
 import { useNavigate } from "react-router-dom";
 
 function AdminRegister() {

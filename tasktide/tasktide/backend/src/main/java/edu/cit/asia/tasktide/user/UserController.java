@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.cit.asia.tasktide.shared.repository.UserRepository;
+import edu.cit.asia.tasktide.user.repository.UserRepository;
 import edu.cit.asia.tasktide.user.dto.UserSummaryDTO;
 
 @RestController

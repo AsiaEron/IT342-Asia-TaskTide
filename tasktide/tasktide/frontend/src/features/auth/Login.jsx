@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import API from "../../shared/services/axiosConfig";
-import { AuthContext } from "../../shared/utils/authContext";
+import API from "./services/axiosConfig";
+import { AuthContext } from "./authContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 
